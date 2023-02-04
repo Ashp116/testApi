@@ -8,3 +8,5 @@ router.get("/accessories", async (req, res) => {
 
     res.send(json)
 })
+
+module.exports = router;
