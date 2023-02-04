@@ -1,11 +1,13 @@
 {
-  "name": "express-prisma-mongo-starter",
+  "name": "test-api",
   "version": "0.0.0",
   "private": true,
+  "main": "./out/main.js",
   "license": "MIT",
   "scripts": {
-    "dev": "prisma db push && nodemon ./src/index",
-    "start": "prisma db push && node ./src/index",
+    "dev": "prisma db push && nodemon .",
+    "start": "node .",
+    "build_watch": "npx tsc -w",
     "mongo-start": "docker run -d -p 27017-27019:27017-27019 --name mongo-dev adaptable/mongo-replica-set",
     "mongo-stop": "docker rm -f mongo-dev"
   },
@@ -19,7 +21,8 @@
     "morgan": "~1.9.1",
     "node-fetch": "^2.0.0",
     "prisma": "^3.14.0",
-    "sanitize-html": "^2.7.0"
+    "sanitize-html": "^2.7.0",
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
