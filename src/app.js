@@ -16,6 +16,6 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Routes
 app.use('/todos', todosRouter);
-app.user('/api', testapiRouter)
+app.use('/api', testapiRouter)
 
 module.exports = app;
