@@ -1,5 +1,6 @@
 import fetch from "node-fetch"
-import {ProductInfoURL} from "./Constants"
+import {ProductInfoURL, Subcategory} from "./Constants"
+import {Response} from "express";
 
 export async function AddProductInfo(id, assetInfo) {
     return new Promise((resolve, reject) => {
@@ -21,4 +22,34 @@ export async function AddProductInfo(id, assetInfo) {
                 reject(err)
             })
     });
+}
+
+export const returnJson = (json ,res: Response) => {
+    if (json.errors) {
+        res.json({
+            "error": {
+                msg: json.errors
+            }
+        })
+
+        return
+    }
+
+    res.json(json)
+}
+export const asyncMiddleware = fn => (req, res, next) => {
+    Promise.resolve(fn(req, res, next))
+        .catch(next);
+};
+
+export const clampMin = (x:number, min: number) =>{
+    if (x < min) {
+        return min
+    }
+    return x
+}
+
+export const getSubcategory = (subcategory) => {
+    let name = Object.keys(Subcategory).filter((x) => Number.isNaN(Number(x)))[ Object.values(Subcategory).filter((x) => Number.isNaN(Number(x))).indexOf(subcategory)]
+    return Subcategory[name]
 }

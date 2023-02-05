@@ -1,5 +1,6 @@
 export const ProductInfoURL = "https://api.roblox.com/marketplace/productinfo"
 export const CatalogSearchURL = "https://catalog.roblox.com/v1/search/items/details?"
+export const CollectablesUrl = "https://www.rolimons.com/itemapi/itemdetails"
 export enum Category  {
         AllItems = 1,
         Clothing = 3,
