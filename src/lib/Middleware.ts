@@ -48,12 +48,13 @@ export const Collectables = asyncMiddleware(async (req, res) => {
 
     let sendJson = {
         nextPageCursor: Cursor + 1,
-        previousPageCursor: clampMin(Cursor-1,0)
+        previousPageCursor: clampMin(Cursor-1,0),
+        data: {}
     }
     let slicedKeys = (Object.keys(json.items).slice((Limit*Cursor), (Limit*(Cursor+1))))
 
     slicedKeys.forEach((value, index) => {
-        sendJson[value] = json.items[value]
+        sendJson["data"][value] = json.items[value]
     })
 
     returnJson(sendJson, res)
