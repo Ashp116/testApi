@@ -9,7 +9,8 @@ export const Accessories =  asyncMiddleware( async (req, res) => {
     let url = `${CatalogSearchURL}Category=${Category.Accessories}&Subcategory=${subCategory}&cursor=${Cursor}`
 
     if (Keyword) {
-        url += `&Keyword=${Keyword}`
+          Keyword.shift()
+        url = `${url}&Keyword=${Keyword[0]}`
     }
 
     let data = await fetch(url)
@@ -23,7 +24,8 @@ export const AllItems = asyncMiddleware( async (req, res) => {
     let url = `${CatalogSearchURL}Category=${Category.AllItems}&cursor=${Cursor}&Keyword=${Keyword}`
 
     if (Keyword) {
-        url += `&Keyword=${Keyword}`
+          Keyword.shift()
+        url = `${url}&Keyword=${Keyword[0]}`
     }
 
     let data = await fetch(url)
@@ -38,7 +40,8 @@ export const Clothing = asyncMiddleware( async (req, res) => {
     let url = `${CatalogSearchURL}Category=${Category.Clothing}&Subcategory=${subCategory}&cursor=${Cursor}`
 
     if (Keyword) {
-        url += `&Keyword=${Keyword}`
+          Keyword.shift()
+        url = `${url}&Keyword=${Keyword[0]}`
     }
 
     let data = await fetch(url)
@@ -49,10 +52,12 @@ export const Clothing = asyncMiddleware( async (req, res) => {
 export const Hairs = asyncMiddleware( async (req, res) => {
     let Cursor = req.query.cursor || ""
     let Keyword = req.query.Keyword
-    let url = `${CatalogSearchURL}Category=${4}&Subcategory=${Subcategory.HairAccessories}&cursor=${Cursor}
-    `
+
+    let url = `${CatalogSearchURL}Category=${4}&Subcategory=${Subcategory.HairAccessories}&cursor=${Cursor}`
+
     if (Keyword) {
-        url += `&Keyword=${Keyword}`
+        Keyword.shift()
+        url = `${url}&Keyword=${Keyword[0]}`
     }
 
     let subCategory = getSubcategory(req.query.subcategory)
@@ -67,7 +72,8 @@ export const BodyParts = asyncMiddleware( async (req, res) => {
     let url = `${CatalogSearchURL}Category=${Category.BodyParts}&cursor=${Cursor}`
 
     if (Keyword) {
-        url += `&Keyword=${Keyword}`
+          Keyword.shift()
+        url = `${url}&Keyword=${Keyword[0]}`
     }
 
     let data = await fetch(url)
