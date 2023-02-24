@@ -4,38 +4,43 @@ import fetch from "node-fetch"
 
 export const Accessories =  asyncMiddleware( async (req, res) => {
     let Cursor = req.query.cursor || ""
+    let Keyword = req.query.Keyword || ""
     let subCategory = getSubcategory(req.query.subcategory)
-    let data = await fetch(`${CatalogSearchURL}Category=${Category.Accessories}&Subcategory=${subCategory}&cursor=${Cursor}`)
+    let data = await fetch(`${CatalogSearchURL}Category=${Category.Accessories}&Subcategory=${subCategory}&cursor=${Cursor}&Keyword=${Keyword}`)
     let json = await data.json()
     returnJson(json, res)
 })
 
 export const AllItems = asyncMiddleware( async (req, res) => {
     let Cursor = req.query.cursor || ""
-    let data = await fetch(`${CatalogSearchURL}Category=${Category.AllItems}&cursor=${Cursor}`)
+    let Keyword = req.query.Keyword || ""
+    let data = await fetch(`${CatalogSearchURL}Category=${Category.AllItems}&cursor=${Cursor}&Keyword=${Keyword}`)
     let json = await data.json()
     returnJson(json, res)
 })
 
 export const Clothing = asyncMiddleware( async (req, res) => {
     let Cursor = req.query.cursor || ""
+    let Keyword = req.query.Keyword || ""
     let subCategory = getSubcategory(req.query.subcategory)
-    let data = await fetch(`${CatalogSearchURL}Category=${Category.Clothing}&Subcategory=${subCategory}&cursor=${Cursor}`)
+    let data = await fetch(`${CatalogSearchURL}Category=${Category.Clothing}&Subcategory=${subCategory}&cursor=${Cursor}&Keyword=${Keyword}`)
     let json = await data.json()
     returnJson(json, res)
 })
 
 export const Hairs = asyncMiddleware( async (req, res) => {
     let Cursor = req.query.cursor || ""
+    let Keyword = req.query.Keyword || ""
     let subCategory = getSubcategory(req.query.subcategory)
-    let data = await fetch(`${CatalogSearchURL}Category=${4}&Subcategory=${Subcategory.HairAccessories}&cursor=${Cursor}`)
+    let data = await fetch(`${CatalogSearchURL}Category=${4}&Subcategory=${Subcategory.HairAccessories}&cursor=${Cursor}&Keyword=${Keyword}`)
     let json = await data.json()
     returnJson(json, res)
 })
 
 export const BodyParts = asyncMiddleware( async (req, res) => {
     let Cursor = req.query.cursor || ""
-    let data = await fetch(`${CatalogSearchURL}Category=${Category.BodyParts}&cursor=${Cursor}`)
+    let Keyword = req.query.Keyword || ""
+    let data = await fetch(`${CatalogSearchURL}Category=${Category.BodyParts}&cursor=${Cursor}&Keyword=${Keyword}`)
     let json = await data.json()
     returnJson(json, res)
 })
